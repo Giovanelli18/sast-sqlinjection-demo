@@ -10,6 +10,7 @@ db.serialize(() => {
 
 app.get('/users', (req, res) => {
   const username = req.query.username;
+  // ⚠️ Vulnerabilidad: SQL Injection
   const query = `SELECT * FROM users WHERE username = '${username}'`;
   
   db.all(query, [], (err, rows) => {
