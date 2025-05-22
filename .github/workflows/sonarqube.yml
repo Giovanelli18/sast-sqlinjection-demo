@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Download SonarScanner
+      - name: Download SonarScanner CLI
         run: |
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
           unzip sonar-scanner-cli-5.0.1.3006-linux.zip
@@ -40,7 +40,7 @@ jobs:
         run: |
           /opt/sonar-scanner/bin/sonar-scanner \
             -Dsonar.projectKey=Giovanelli18_sast-sqlinjection-demo \
-            -Dsonar.organization=FranciscoGiovanelli \
+            -Dsonar.organization=Giovanelli18 \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
