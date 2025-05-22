@@ -10,12 +10,14 @@ db.serialize(() => {
 
 app.get('/users', (req, res) => {
   const username = req.query.username;
-  const query = "SELECT * FROM users WHERE username = ?";
-  db.all(query, [username], (err, rows) => {
+  // ⚠️ Vulnerabilidad: SQL Injection
+  const query = `SELECT * FROM users WHERE username = '${username}'`;
+  
+  db.all(query, [], (err, rows) => {
     if (err) {
       return res.status(500).send(err.message);
     }
-    res.json({ users: rows });
+    res.json({ users: rows });
   });
 });
 
