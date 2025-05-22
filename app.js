@@ -10,14 +10,14 @@ db.serialize(() => {
 
 app.get('/users', (req, res) => {
   const username = req.query.username;
-  const query = `SELECT * FROM users WHERE username = '${username}'`;
-  
-  db.all(query, [], (err, rows) => {
+  const query = "SELECT * FROM users WHERE username = ?";
+  db.all(query, [username], (err, rows) => {
     if (err) {
       return res.status(500).send(err.message);
     }
     res.json({ users: rows });
   });
+
 });
 
 app.listen(3000, () => console.log('App running on http://localhost:3000'));
