@@ -21,9 +21,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
+     
       - name: Run SonarQube analysis
         uses: SonarSource/sonarqube-scan-action@v1.2.0
-        with:
-          host-url: ${{ secrets.SONAR_HOST_URL }}
-          login: ${{ secrets.SONAR_TOKEN }}
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
