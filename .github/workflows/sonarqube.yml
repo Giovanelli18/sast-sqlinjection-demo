@@ -39,8 +39,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           /opt/sonar-scanner/bin/sonar-scanner \
-            -Dsonar.projectKey=sast-sqlinjection-demo \
-            -Dsonar.organization=FranciscoGiovanelli \
+            -Dsonar.projectKey=Giovanelli18_sast-sqlinjection-demo \
+            -Dsonar.organization=Giovanelli18 \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
